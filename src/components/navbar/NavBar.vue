@@ -25,6 +25,7 @@
     justify-content: center;
     background-color: var(--primary-white);
     padding: 0px 10px;
+    margin-bottom: 50px;
 }
 
 #navbarContent {
