@@ -43,3 +43,24 @@ export const polls = [{
     votes: 24
 }]
 
+export const coWorkers = [{
+    id: 1,
+    name: "Jan Nielsen",
+    role: "Developer",
+    department: "development",
+    img: "https://www.shutterstock.com/image-photo/silhouette-studio-shot-isolated-on-260nw-246672304.jpg"
+},{
+    id: 2,
+    name: "Karsten Henriksen",
+    role: "DevOps",
+    department: "development",
+    img: "https://www.shutterstock.com/image-photo/silhouette-studio-shot-isolated-on-260nw-246672304.jpg"
+},{
+    id: 3,
+    name: "Fanta Exotic",
+    role: "SoMe Manager",
+    department: "marketing",
+    img: "https://www.shutterstock.com/image-photo/silhouette-studio-shot-isolated-on-260nw-246672304.jpg"
+},
+]
+

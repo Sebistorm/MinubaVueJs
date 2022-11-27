@@ -27,6 +27,7 @@
   --primary-red: #85223F;
   --primary-orange: #F27121;
   --primary-grey: #373737;
+  --primary-lightGrey: #F8F8F8;
   --primary-dustLightGreen: #E2FFC5;
   --primary-black: #000000;
 }
@@ -81,5 +82,9 @@ body {
   max-width: 1080px;
   width: 100%;
   display: flex;
+}
+
+.mt-10 {
+  margin-top: 10px;
 }
 </style>
