@@ -29,6 +29,7 @@
   --primary-grey: #373737;
   --primary-lightGrey: #F8F8F8;
   --primary-dustLightGreen: #E2FFC5;
+  --primary-green: #40DB7A;
   --primary-black: #000000;
 }
 
