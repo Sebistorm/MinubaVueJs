@@ -1,10 +1,8 @@
 <template>
-    <div id="main">
-        <div id="content">
-            <CoworkerOfTheMonthPoll v-show="!isOrdinaryPoll" />
-            <StandardPoll v-show="isOrdinaryPoll" />
-        </div> 
-    </div>
+    <div id="content">
+        <CoworkerOfTheMonthPoll v-show="!isOrdinaryPoll" />
+        <StandardPoll v-show="isOrdinaryPoll" />
+    </div> 
 </template>
 
 <script>
