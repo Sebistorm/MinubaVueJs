@@ -33,6 +33,33 @@ export const events = [{
     startTime: "17:00",
     endTime: "23:00",
     location: "Nybrovej 304"
+},{
+    id: 2,
+    title: "VM Opvisning",
+    image: "https://indkast.dk/i/640/24578.jpg",
+    description: "lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum",
+    date: "19-11-2022",
+    startTime: "17:00",
+    endTime: "23:00",
+    location: "Nybrovej 104"
+},{
+    id: 3,
+    title: "Julefrokost",
+    image: "https://slagtergronvall.dk/wp-content/uploads/2020/10/julefrokost-bord-moerbrad-aeg-aal-aebleflaesk-sild-flaeskesteg.jpg",
+    description: "lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum",
+    date: "19-11-2022",
+    startTime: "17:00",
+    endTime: "23:00",
+    location: "Nybrovej 304"
+},{
+    id: 4,
+    title: "VM Opvisning",
+    image: "https://indkast.dk/i/640/24578.jpg",
+    description: "lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum lorem Ipsum",
+    date: "19-11-2022",
+    startTime: "17:00",
+    endTime: "23:00",
+    location: "Nybrovej 104"
 }]
 
 export const polls = [{

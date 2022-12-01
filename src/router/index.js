@@ -2,6 +2,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 import PollView from "../views/PollView.vue"
 import CreatePollView from "../views/CreatePollView.vue";
+import EventsView from "../views/EventsView.vue";
 
 const routes = [
   {
@@ -16,6 +17,10 @@ const routes = [
     path: "/createpoll",
     name: "createpoll",
     component: CreatePollView
+  }, {
+    path: "/events",
+    name: "events",
+    component: EventsView
   }
   
 ]
