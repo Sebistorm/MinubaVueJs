@@ -3,7 +3,9 @@
 
     <q-page-container>
       <NavBar/>
-      <router-view></router-view>
+      <div id="main">
+        <router-view></router-view>
+      </div>
     </q-page-container>
   </q-layout>
   

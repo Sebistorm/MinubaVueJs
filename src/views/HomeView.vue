@@ -1,22 +1,20 @@
 <template>
-  <div id="main">
-    <div id="content">
-      <div class="left">
-        <h2>News</h2>
-        <div v-for="oneNews in news"
-          :key="oneNews.id">
-          <NewsCard v-if="!oneNews.image"
-            :news="oneNews"
-          />
-          <NewsCardWithImg v-else :news="oneNews" />
-        </div>
+  <div id="content">
+    <div class="left">
+      <h2>News</h2>
+      <div v-for="oneNews in news"
+        :key="oneNews.id">
+        <NewsCard v-if="!oneNews.image"
+          :news="oneNews"
+        />
+        <NewsCardWithImg v-else :news="oneNews" />
       </div>
-      <div class="right">
-        <h2>Pinned</h2>
-        <PinnedNewsCard :news="news[1]" />
-        <PinnedEventCard :event="events[0]" />
-        <PinnedPollCard :poll="polls[0]" />
-      </div>
+    </div>
+    <div class="right">
+      <h2>Pinned</h2>
+      <PinnedNewsCard :news="news[1]" />
+      <PinnedEventCard :event="events[0]" />
+      <PinnedPollCard :poll="polls[0]" />
     </div>
   </div>
 </template>
