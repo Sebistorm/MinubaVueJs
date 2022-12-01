@@ -88,4 +88,12 @@ body {
 .mt-10 {
   margin-top: 10px;
 }
+
+.mb-10 {
+  margin-bottom: 10px;
+}
+
+.mb-20 {
+  margin-bottom: 20px;
+}
 </style>
