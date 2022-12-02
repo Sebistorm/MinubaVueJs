@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import PollView from "../views/PollView.vue"
 import CreatePollView from "../views/CreatePollView.vue";
 import EventsView from "../views/EventsView.vue";
+import EventView from "../views/EventView.vue";
 
 const routes = [
   {
@@ -21,6 +22,10 @@ const routes = [
     path: "/events",
     name: "events",
     component: EventsView
+  }, {
+    path: "/event",
+    name: "event",
+    component: EventView
   }
   
 ]
