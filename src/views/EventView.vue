@@ -1,30 +1,36 @@
 <template>
     <div id="content">
         <div class="left">
-            <h1>{{events[0].title}}</h1>
-            <p>{{events[0].date}} Kl. {{events[0].startTime}} - {{events[0].endTime}}</p>
-            <p>{{events[0].location}}</p>
-            <p>{{events[0].description}}</p>
+            <h1>{{event.title}}</h1>
+            <p>{{event.date}} Kl. {{event.startTime}} - {{event.endTime}}</p>
+            <p>{{event.location}}</p>
+            <p>{{event.description}}</p>
             <div class="participantsBox">
                 <p>23 Participants</p>
                 <p>12 Invited</p>
             </div>
         </div>
         <div class="right">
-            <img :src="events[0].image" :alt="events[0].title">
+            <img :src="event.imagePath" :alt="event.title">
         </div>
     </div>
 </template>
 
 <script>
-import { events } from '@/fake-data';
 export default {
     name: "EventView",
     data() {
         return {
-            events
+            event: {}
         }
-    }
+    },
+    async mounted() {
+        fetch(`http://localhost:8080/events/${this.$route.params.id}`)
+        .then(res => res.json())
+        .then(data => {
+            this.event = data;
+        })
+    }   
 }
 </script>
 

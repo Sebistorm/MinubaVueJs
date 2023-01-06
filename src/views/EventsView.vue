@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import {events} from "../fake-data"
+//import {events} from "../fake-data"
 import EventCard from "../components/events/EventCard.vue"
 export default {
     name: "EventsView",
@@ -24,12 +24,18 @@ export default {
     },
     data() {
         return {
-            events
+            events:[]
         }
+    },
+    async mounted() {
+        fetch("http://localhost:8080/events")
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            this.events = data;
+        })
     }
-
 }
-console.log(events)
 </script>
 
 <style scoped>

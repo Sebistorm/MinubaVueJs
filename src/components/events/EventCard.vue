@@ -1,24 +1,26 @@
 <template>
-    <div class="card">
-        <div class="cardHeader">
-            <img :src="event.image" :alt="event.title">
-        </div>
-        <div class="cardBody">
-            <div class="cardBodyLeft">
-                <span class="material-icons">
-                calendar_today
-                </span>
-                <div class="date">
-                    {{event.date[0]+event.date[1]}}
-                </div>
+    <routerLink :to="'/event/' + event.id">
+        <div class="card">
+            <div class="cardHeader">
+                <img :src="event.imagePath" :alt="event.title">
             </div>
-            <div class="cardBodyRight">
-                <p>{{event.date}} Kl. {{event.startTime}} - {{event.endTime}}</p>
-                <h3>{{event.title}}</h3>
-                <p>{{event.location}}</p>
-            </div>     
+            <div class="cardBody">
+                <div class="cardBodyLeft">
+                    <span class="material-icons">
+                    calendar_today
+                    </span>
+                    <div class="date">
+                        {{event.date[0]+event.date[1]}}
+                    </div>
+                </div>
+                <div class="cardBodyRight">
+                    <p>{{event.date}} Kl. {{event.startTime}} - {{event.endTime}}</p>
+                    <h3>{{event.title}}</h3>
+                    <p>{{event.location}}</p>
+                </div>     
+            </div>
         </div>
-    </div>
+    </routerLink>
 </template>
 
 <script>
@@ -29,6 +31,9 @@ export default {
 </script>
 
 <style scoped>
+    a {
+        text-decoration: none;
+    }
     .card {
         height: 100%;
     }

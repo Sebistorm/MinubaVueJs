@@ -11,7 +11,7 @@ const routes = [
     name: 'home',
     component: HomeView
   }, {
-    path: "/polltest",
+    path: "/poll/:id",
     name: "poll",
     component: PollView
   }, {
@@ -23,7 +23,7 @@ const routes = [
     name: "events",
     component: EventsView
   }, {
-    path: "/event",
+    path: "/event/:id",
     name: "event",
     component: EventView
   }

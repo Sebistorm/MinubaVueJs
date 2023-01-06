@@ -8,7 +8,7 @@
 <script>
 import CoworkerOfTheMonthPoll from "../components/poll/CoworkerOfTheMonth.vue"
 import StandardPoll from "../components/poll/StandardPoll.vue";
-let isOrdinaryPoll = true;
+let isOrdinaryPoll = false;
 export default {
     name: "pollView",
     components: {
