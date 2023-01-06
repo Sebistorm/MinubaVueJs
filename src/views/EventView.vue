@@ -12,6 +12,12 @@
         </div>
         <div class="right">
             <img :src="event.imagePath" :alt="event.title">
+            <div class="eventAdminButtons">
+                <routerLink :to="'/updateevent/' + event.id">
+                    <q-btn type="button" style="background: var(--primary-green); color: var(--primary-white);" label="Update Event" />
+                </routerLink>
+                <q-btn type="button" style="background: var(--primary-grey); color: var(--primary-white);" label="Delete Event" />
+            </div>
         </div>
     </div>
 </template>
@@ -72,7 +78,7 @@ p {
     width: 50%;
     text-align: center;
     font-size: 30px !important;
-    padding: 1rem;
+    padding: .5rem;
 }
 
 .participantsBox p:first-of-type {
@@ -81,6 +87,17 @@ p {
 
 .participantsBox p:last-of-type {
     border-left: 1px solid var(--primary-white);
+}
+
+.eventAdminButtons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.eventAdminButtons * {
+    text-decoration: none;
 }
 
 </style>

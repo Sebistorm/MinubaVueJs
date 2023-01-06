@@ -4,6 +4,8 @@ import PollView from "../views/PollView.vue"
 import CreatePollView from "../views/CreatePollView.vue";
 import EventsView from "../views/EventsView.vue";
 import EventView from "../views/EventView.vue";
+import CreateEventView from "../views/CreateEventView.vue";
+import UpdateEventView from "../views/UpdateEventView.vue";
 
 const routes = [
   {
@@ -26,7 +28,16 @@ const routes = [
     path: "/event/:id",
     name: "event",
     component: EventView
+  }, {
+    path: "/createevent",
+    name: "createevent",
+    component: CreateEventView
+  }, {
+    path: "/updateevent/:id",
+    name: "updateevent",
+    component: UpdateEventView
   }
+  
   
 ]
 
