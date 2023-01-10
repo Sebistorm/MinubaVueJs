@@ -65,8 +65,7 @@ export default {
 
                 const response = await fetch(`http://localhost:8080/event/${this.$route.params.id}`, fetchOptions);
                 if (response.ok) {
-                //const data = await response.json();
-                console.log(response.ok);
+                    console.log(response.ok);
                 }
             }
     }, 

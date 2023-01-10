@@ -11,7 +11,7 @@
                         val => val && val.length > 0 || 'Please type something'
                     ]" />
 
-                    <q-select class="mb-20" label="Write the answers here (Use Enter)" outlined v-model="answers" 
+                    <q-select class="mb-20" label="Write the answers here (Use Enter)" outlined v-model="pollAnswers" 
                     use-input use-chips multiple hide-dropdown-icon input-debounce="0" @new-value="createValue"
                     v-show="type!='CoWorker of the month'" />
                 </div>
@@ -47,21 +47,52 @@ export default {
         const description = ref(null)
         const dateStart = ref(null)
         const dateEnd = ref(null)
-        const answers = ref(null)
+        const pollAnswers = ref(null)
+        const type = ref(null);
 
         return {
             title,
             description,
             dateStart,
             dateEnd,
-            answers,
-            type: ref(null),
+            pollAnswers,
+            type,
             options: [
                 'Standard Poll', 'CoWorker of the month'
             ],
 
-            onSubmit() {
+            async onSubmit() {
                 console.log("submit!")
+                let poll = {};
+                poll.title = title.value;
+                poll.description = description.value;
+                poll.dateStart = dateStart.value;
+                poll.dateEnd = dateEnd.value;
+                poll.type = type.value;
+                poll.imagePath = "https://blogs.tees.ac.uk/lteonline/files/2018/11/poll.png";
+                if(type.value != 'CoWorker of the month') {
+                    let tempAnswersArray = [];
+                    pollAnswers.value.forEach(answer => {
+                        let obj = {pollAnswers: answer};
+                        tempAnswersArray.push(obj); 
+                    });
+                    console.log(tempAnswersArray);
+                    poll.pollAnswers = tempAnswersArray;
+                }
+                   
+                const fetchOptions = {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(poll)
+                }
+
+                const response = await fetch("http://localhost:8080/poll", fetchOptions);
+                if (response.ok) {
+                    console.log(response.ok);
+                    //router.push(`/poll/${data.id}`);
+                }
             },
             createValue (val, done) {
                 done(val, 'add-unique')

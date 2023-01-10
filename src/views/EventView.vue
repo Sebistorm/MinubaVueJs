@@ -16,15 +16,35 @@
                 <routerLink :to="'/updateevent/' + event.id">
                     <q-btn type="button" style="background: var(--primary-green); color: var(--primary-white);" label="Update Event" />
                 </routerLink>
-                <q-btn type="button" style="background: var(--primary-grey); color: var(--primary-white);" label="Delete Event" />
+                <q-btn @click="confirm = true" type="button" style="background: var(--primary-grey); color: var(--primary-white);" label="Delete Event" />
             </div>
         </div>
     </div>
+
+    <q-dialog v-model="confirm" persistent>
+      <q-card>
+        <q-card-section class="row items-center">
+          <span class="q-ml-sm">Are you sure that you want to delete this event?</span>
+        </q-card-section>
+
+        <q-card-actions align="right">
+          <q-btn flat label="Cancel" color="primary" v-close-popup />
+          <q-btn @click="deleteEvent" flat label="Confirm" color="primary" v-close-popup />
+        </q-card-actions>
+      </q-card>
+    </q-dialog>
 </template>
 
 <script>
+import router from '@/router'
+import { ref } from 'vue'
 export default {
     name: "EventView",
+    setup () {
+        return {
+            confirm: ref(false),
+        }
+    },
     data() {
         return {
             event: {}
@@ -36,6 +56,22 @@ export default {
         .then(data => {
             this.event = data;
         })
+    },
+    methods: {
+        async deleteEvent() { 
+            const fetchOptions = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+                }
+            }
+
+            const response = await fetch(`http://localhost:8080/event/${this.$route.params.id}`, fetchOptions);
+            if (response.ok) {
+                console.log(response.ok);
+                router.push("/events/");
+            }
+        }
     }   
 }
 </script>

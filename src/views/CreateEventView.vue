@@ -84,9 +84,6 @@ export default {
                 router.push(`/event/${data.id}`);
                 
                 }
-            },
-            createValue (val, done) {
-                done(val, 'add-unique')
             }
         }
     }
