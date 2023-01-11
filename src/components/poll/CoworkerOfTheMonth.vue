@@ -1,6 +1,6 @@
 <template>
     <div style="width: 100%;">
-        <h1>Co Worker of the month</h1>
+        <h1>{{poll.title}}</h1>
         <q-card style="width:100%">
             <q-tabs
             v-model="tab"
@@ -71,6 +71,7 @@ marketingDepartment = coWorkers.filter(coWorker => coWorker.department == "marke
 
 export default {
     name: "CoworkerOfTheMonth",
+    props: ["poll"],
     components: {
         CoWorkerCard
     },

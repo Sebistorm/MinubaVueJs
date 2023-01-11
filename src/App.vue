@@ -91,6 +91,10 @@ body {
   margin-top: 10px;
 }
 
+.mt-20 {
+  margin-top: 20px;
+}
+
 .mb-10 {
   margin-bottom: 10px;
 }
