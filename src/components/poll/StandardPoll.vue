@@ -5,7 +5,7 @@
             <p>{{ poll.description }}</p>
             <div style="display:flex;">
                 <div class="left">
-                    <genericRadioButtonWithLabel v-for="answer in poll.pollAnswers" :key="answer.id" :value="answer.pollAnswers" :radioName="answer.pollAnswers" :slug="answer.pollAnswers" />  
+                    <genericRadioButtonWithLabel v-for="answer in poll.pollAnswers" :key="answer.id" :value="answer.pollAnswers" :radioName="'answers'" :slug="answer.pollAnswers" />  
                 </div>
                 <div class="right">
                     <q-btn class="mb-20" style="background: var(--primary-green); color: var(--primary-white);" label="Vote" />

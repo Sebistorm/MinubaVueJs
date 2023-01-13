@@ -7,7 +7,10 @@
             <p>{{event.description}}</p>
             <div class="participantsBox">
                 <p>23 Participants</p>
-                <p>12 Invited</p>
+                <div class="eventCTAContainer">
+                    <q-btn @click="signUp" :disabled="isDisabled" id="signupBtn" type="button" style="background: var(--primary-green); color: var(--primary-white);" :label="BtnSignupText" />
+                    <q-btn @click="cancel" type="button" style="background: var(--primary-grey); color: var(--primary-white);" label="Cancel" />
+                </div>
             </div>
         </div>
         <div class="right">
@@ -16,7 +19,7 @@
                 <routerLink :to="'/updateevent/' + event.id">
                     <q-btn type="button" style="background: var(--primary-green); color: var(--primary-white);" label="Update Event" />
                 </routerLink>
-                <q-btn @click="confirm = true" type="button" style="background: var(--primary-grey); color: var(--primary-white);" label="Delete Event" />
+                <q-btn @click="confirm = true" class="cy-btnDelete" type="button" style="background: var(--primary-grey); color: var(--primary-white);" label="Delete Event" />
             </div>
         </div>
     </div>
@@ -29,7 +32,7 @@
 
         <q-card-actions align="right">
           <q-btn flat label="Cancel" color="primary" v-close-popup />
-          <q-btn @click="deleteEvent" flat label="Confirm" color="primary" v-close-popup />
+          <q-btn @click="deleteEvent" class="cy-btnConfirm" flat label="Confirm" color="primary" v-close-popup />
         </q-card-actions>
       </q-card>
     </q-dialog>
@@ -38,6 +41,7 @@
 <script>
 import router from '@/router'
 import { ref } from 'vue'
+const coWorkerId = 1;
 export default {
     name: "EventView",
     setup () {
@@ -47,7 +51,9 @@ export default {
     },
     data() {
         return {
-            event: {}
+            event: {},
+            isDisabled: false,
+            BtnSignupText: "Sign Up"
         }
     },
     async mounted() {
@@ -71,8 +77,38 @@ export default {
                 console.log(response.ok);
                 router.push("/events/");
             }
+        },
+        async signUp() {
+            const fetchOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+                }
+            }
+            const response = await fetch(`http://localhost:8080/event/${this.$route.params.id}/coworker/${coWorkerId}`, fetchOptions);
+            console.log(response)
+            if (response.ok) {
+                console.log(response.ok);
+                this.BtnSignupText = "Signed Up"
+                this.isDisabled = true;
+            }
+        },
+        async cancel() {
+            const fetchOptions = {
+            method: "DELETE",
+            headers: {
+                "Content-Type": "application/json"
+                }
+            }
+            const response = await fetch(`http://localhost:8080/event/${this.$route.params.id}/coworker/${coWorkerId}`, fetchOptions);
+            console.log(response)
+            if (response.ok) {
+                console.log(response.ok);
+                this.BtnSignupText = "Sign Up"
+                this.isDisabled = false;
+            }
         }
-    }   
+    }
 }
 </script>
 
@@ -103,9 +139,6 @@ p {
 
 .participantsBox {
     display: flex;
-    background-color: var(--primary-red);
-    color: var(--primary-white);
-    border-radius: 10px;
     margin-top: 30px;
 }
 
@@ -113,8 +146,12 @@ p {
     margin-bottom: 0px;
     width: 50%;
     text-align: center;
-    font-size: 30px !important;
+    font-size: 20px !important;
     padding: .5rem;
+    background-color: var(--primary-red);
+    color: var(--primary-white);
+    border-radius: 10px;
+    cursor: pointer;
 }
 
 .participantsBox p:first-of-type {
@@ -134,6 +171,12 @@ p {
 
 .eventAdminButtons * {
     text-decoration: none;
+}
+
+.eventCTAContainer {
+    display: flex;
+    width:50%;
+    justify-content: space-evenly;
 }
 
 </style>
