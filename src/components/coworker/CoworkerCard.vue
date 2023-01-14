@@ -7,7 +7,7 @@
             <h4>{{coworker.name}}</h4>
             <h6>{{coworker.role}}</h6>
             <textarea placeholder="Write a comment"></textarea>
-            <q-btn class="mt-10" style="background: var(--primary-red); color: var(--primary-white); width: 100%;" label="Vote" />
+            <q-btn @click="()=>voteCoWorkerOfMonth(coworker.id)" class="mt-10" style="background: var(--primary-red); color: var(--primary-white); width: 100%;" label="Vote" />
         </form>
     </div>
 </template>
@@ -15,7 +15,36 @@
 <script>
 export default {
     name: "coworkerCard",
-    props: ["coworker"]
+    props: ["coworker", "coWorkerId"],
+    methods: {
+        async voteCoWorkerOfMonth(votedCoWorkerId) {
+            let CoworkerOfTheMonth = {
+                votedCoWorker: {
+                    id: Number(votedCoWorkerId)
+                },
+                polls: {
+                    pollId: Number(this.$route.params.id)
+                },
+                coWorkers: {
+                    id: Number(this.coWorkerId)
+                }
+            };
+            
+            const fetchOptions = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(CoworkerOfTheMonth)
+            }
+
+            const response = await fetch("http://localhost:8080/coworkermonthvote", fetchOptions);
+            if (response.ok) {
+                console.log(response.ok);
+                //router.push(`/poll/${data.id}`);
+            } 
+        }
+    }
 }
 </script>
 

@@ -53,15 +53,11 @@ export default {
     methods: {
         async onSubmit() {
                 console.log("submit!")
-                console.log(this.poll);
-                console.log(this.poll.pollAnswers);
-                this.poll.pollAnswers[0].pollAnswers = "Ja!"
                 if(this.poll.type.value != 'CoWorker of the month') {
                     this.poll.pollAnswers.forEach(answer => {
                         answer.pollId = this.poll.pollId;
                     });
                 }
-                console.log(this.poll);
                  
                 const fetchOptions = {
                 method: "PUT",

@@ -1,7 +1,7 @@
 <template>
     <div id="content">
-        <CoworkerOfTheMonthPoll :poll="poll" v-show="poll.type == 'CoWorker of the month' " />
-        <StandardPoll :poll="poll" v-show="poll.type == 'Standard Poll' " />
+        <CoworkerOfTheMonthPoll :poll="poll" :coWorkerId="coWorkerId" v-if="poll.type == 'CoWorker of the month'" />
+        <StandardPoll :poll="poll" :coWorkerId="coWorkerId" v-if="poll.type == 'Standard Poll'" />
         <div class="eventAdminButtons">
             <routerLink :to="'/updatepoll/' + poll.pollId">
                 <q-btn type="button" style="background: var(--primary-green); color: var(--primary-white);" label="Update Event" />
@@ -29,6 +29,7 @@ import router from '@/router'
 import { ref } from 'vue'
 import CoworkerOfTheMonthPoll from "../components/poll/CoworkerOfTheMonth.vue"
 import StandardPoll from "../components/poll/StandardPoll.vue";
+const coWorkerId = 3;
 export default {
     name: "pollView",
     components: {
@@ -43,7 +44,8 @@ export default {
     },
     data () {
         return {
-            poll: {}
+            poll: {},
+            coWorkerId
         }
     },
     async mounted() {
@@ -51,7 +53,7 @@ export default {
         .then(res => res.json())
         .then(data => {
             this.poll = data;
-            console.log(this.poll);
+            console.log(this.poll)
         })
     },
     methods: {

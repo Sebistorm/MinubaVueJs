@@ -22,35 +22,50 @@
                     <div class="coWorkersGrid">
                         <div v-for="coworker in developmentDepartment"
                             :key="coworker.id">
-                            <CoWorkerCard :coworker="coworker"
+                            <CoWorkerCard :coworker="coworker" :coWorkerId="coWorkerId"
                             />
                         </div>
                     </div>
                 </q-tab-panel>
 
                 <q-tab-panel name="support">
-                    <div class="text-h6">Alarms</div>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    <div class="coWorkersGrid">
+                        <div v-for="coworker in support"
+                            :key="coworker.id">
+                            <CoWorkerCard :coworker="coworker" :coWorkerId="coWorkerId"
+                            />
+                        </div>
+                    </div>
                 </q-tab-panel>
 
                 <q-tab-panel name="sales department">
-                    <div class="text-h6">Movies</div>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    <div class="coWorkersGrid">
+                        <div v-for="coworker in salesDepartment"
+                            :key="coworker.id">
+                            <CoWorkerCard :coworker="coworker" :coWorkerId="coWorkerId"
+                            />
+                        </div>
+                    </div>
                 </q-tab-panel>
                 
                 <q-tab-panel name="marketing">
                     <div class="coWorkersGrid">
                         <div v-for="coworker in marketingDepartment"
                             :key="coworker.id">
-                            <CoWorkerCard :coworker="coworker"
+                            <CoWorkerCard :coworker="coworker" :coWorkerId="coWorkerId"
                             />
                         </div>
                     </div>
                 </q-tab-panel>
 
                 <q-tab-panel name="hr">
-                    <div class="text-h6">Movies</div>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    <div class="coWorkersGrid">
+                        <div v-for="coworker in hr"
+                            :key="coworker.id">
+                            <CoWorkerCard :coworker="coworker" :coWorkerId="coWorkerId"
+                            />
+                        </div>
+                    </div>
                 </q-tab-panel>
             </q-tab-panels>
         </q-card>
@@ -60,18 +75,12 @@
 
 <script>
 import { ref } from 'vue'
-import {coWorkers} from "../../fake-data";
 import CoWorkerCard from "../coworker/CoworkerCard.vue";
 
-let developmentDepartment = [];
-let marketingDepartment = []
-
-developmentDepartment = coWorkers.filter(coWorker => coWorker.department == "development");
-marketingDepartment = coWorkers.filter(coWorker => coWorker.department == "marketing");
 
 export default {
     name: "CoworkerOfTheMonth",
-    props: ["poll"],
+    props: ["poll", "coWorkerId"],
     components: {
         CoWorkerCard
     },
@@ -82,10 +91,28 @@ export default {
     },
     data () {
         return {
-            coWorkers,
-            developmentDepartment,
-            marketingDepartment,
+            coWorkers:[],
+            developmentDepartment:[],
+            marketingDepartment: [],
+            salesDepartment: [],
+            support: [],
+            hr: [],
         }
+    },
+    async mounted() {
+        fetch("http://localhost:8080/coworkers")
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            this.coWorkers = data;
+            // remove the logged in users from the array (should not be allowed to vote on himself)
+            this.coWorkers = this.coWorkers.filter(coWorker => coWorker.id != this.coWorkerId);
+            this.developmentDepartment = this.coWorkers.filter(coWorker => coWorker.department == "DEVELOPMENT");
+            this.marketingDepartment = this.coWorkers.filter(coWorker => coWorker.department == "MARKETING");
+            this.salesDepartment = this.coWorkers.filter(coWorker => coWorker.department == "SALESDEPARTMENT");
+            this.support = this.coWorkers.filter(coWorker => coWorker.department == "SUPPORT");
+            this.hr = this.coWorkers.filter(coWorker => coWorker.department == "HR");
+        })
     }
 }
 </script>
