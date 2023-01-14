@@ -1,7 +1,8 @@
 <template>
+    <routerLink :to="'/news/' + news.id">
     <div class="card">
         <div class="cardHeader">
-            <img :src="news.image" :alt="news.title">
+            <img :src="news.imagePath" :alt="news.title">
         </div>
         <div class="cardBody">
             <h3>{{news.title}}</h3>
@@ -14,6 +15,7 @@
             </div>
         </div>
     </div>
+    </routerLink>
 </template>
 
 <script>
@@ -24,11 +26,13 @@ export default {
 </script>
 
 <style scoped>
-
     .card {
         margin-bottom: 2rem;
     }
-
+    a {
+        text-decoration: none;
+        color: unset;
+    }
     .cardHeader {
         max-height: 200px;
     }

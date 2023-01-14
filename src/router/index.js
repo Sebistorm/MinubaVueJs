@@ -8,6 +8,10 @@ import EventsView from "../views/EventsView.vue";
 import EventView from "../views/EventView.vue";
 import CreateEventView from "../views/CreateEventView.vue";
 import UpdateEventView from "../views/UpdateEventView.vue";
+import News from "../views/NewsView.vue"
+import CreateNewsView from "../views/CreateNewsView.vue"
+import SingleNewsView from "../views/SingleNewsView.vue";
+import UpdateNews from "../views/UpdateNewsView.vue";
 
 const routes = [
   {
@@ -46,6 +50,22 @@ const routes = [
     path: "/updateevent/:id",
     name: "updateevent",
     component: UpdateEventView
+  }, {
+    path: "/news",
+    name: "news",
+    component: News
+  }, {
+    path: "/news/:id",
+    name: "singlenews",
+    component: SingleNewsView
+  }, {
+    path: "/createnews",
+    name: "createnews",
+    component: CreateNewsView
+  }, {
+    path: "/updatenews/:id",
+    name: "updatenews",
+    component: UpdateNews
   }
   
   

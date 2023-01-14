@@ -12,41 +12,45 @@
     </div>
     <div class="right">
       <h2>Pinned</h2>
-      <PinnedNewsCard :news="news[1]" />
-      <PinnedEventCard :event="events[0]" />
-      <PinnedPollCard :poll="polls[0]" />
+
     </div>
   </div>
 </template>
 
 <script>
 import {news} from "../fake-data";
-import {events} from "../fake-data";
 import {polls} from "../fake-data";
 import NewsCard from "@/components/news/NewsCard.vue";
 import NewsCardWithImg from "../components/news/NewsCardWithImg.vue"
-import PinnedEventCard from "../components/pinnedContent/EventCard.vue"
-import PinnedNewsCard from "../components/pinnedContent/NewsCard.vue"
-import PinnedPollCard from "../components/pinnedContent/PollCard.vue"
+
 
 export default {
   name: 'HomeView',
   components: {
     NewsCard,
     NewsCardWithImg,
-    PinnedEventCard,
-    PinnedNewsCard,
-    PinnedPollCard
+
   },
   data() {
     return {
       news,
-      events,
+      feed: [],
       polls
+    }
+  },
+  mounted(){
+    fetch("http://localhost:8080/feed")
+    .then(res => res.json())
+    .then(data => {
+        this.createFeed(data)
+    })
+  },
+  methods: {
+    createFeed: function (data) {
+      console.log(data)
     }
   }
 }
-console.log(news)
 </script>
 
 

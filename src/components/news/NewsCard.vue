@@ -1,18 +1,20 @@
 <template>
-    <div class="card">
-        <div class="cardHeader">
-            <h3>{{news.title}}</h3>
-        </div>
-        <div class="cardBody">
-            <p>{{news.description}}</p>
-            <div class="cardBodyBottom">
-                <span class="material-icons">
-                    newspaper
-                </span>
-                <div>{{news.date}}</div>
+    <routerLink :to="'/news/' + news.id">
+        <div class="card">
+            <div class="cardHeader">
+                <h3>{{news.title}}</h3>
+            </div>
+            <div class="cardBody">
+                <p>{{news.description}}</p>
+                <div class="cardBodyBottom">
+                    <span class="material-icons">
+                        newspaper
+                    </span>
+                    <div>{{news.date}}</div>
+                </div>
             </div>
         </div>
-    </div>
+    </routerLink>
 </template>
 
 <script>
@@ -26,7 +28,10 @@ export default {
     .card {
             margin-bottom: 2rem;
     }
-    
+    a {
+        text-decoration: none;
+        color: unset;
+    }
     .cardHeader {
         background-color: var(--primary-red);
         text-align: center;
