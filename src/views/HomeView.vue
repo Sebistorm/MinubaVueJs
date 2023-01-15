@@ -1,7 +1,7 @@
 <template>
   <div id="content">
     <div class="left">
-      <h2>News</h2>
+      <h2>Feed</h2>
       <div v-for="oneNews in feed.news"
         :key="oneNews.id">
         <NewsCard v-if="oneNews.imagePath == 'null' && !oneNews.pinned"
