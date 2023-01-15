@@ -58,16 +58,17 @@ export default {
                 console.log(news)
 
                 const fetchOptions = {
-                    method: "POST",
-                    Headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(news)
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(news)
                 }
 
-                const response = await fetch("localhost:8080/news", fetchOptions);
-                if(response.ok) {
-                    //const data = await response.json();
+                const response = await fetch("http://localhost:8080/news", fetchOptions);
+                if (response.ok) {
+                    console.log(response.ok);
+                    //router.push(`/poll/${data.id}`);
                 }
             }
         }

@@ -10,11 +10,11 @@
                     calendar_today
                     </span>
                     <div class="date">
-                        {{event.date[0]+event.date[1]}}
+                        {{event.publishDate[0]+event.publishDate[1]}}
                     </div>
                 </div>
                 <div class="cardBodyRight">
-                    <p>{{event.date}} Kl. {{event.startTime}} - {{event.endTime}}</p>
+                    <p>{{event.publishDate}} Kl. {{event.startTime}} - {{event.endTime}}</p>
                     <h3>{{event.title}}</h3>
                     <p>{{event.location}}</p>
                 </div>     

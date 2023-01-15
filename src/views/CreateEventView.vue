@@ -15,7 +15,7 @@
                     :rules="[val => val && val.length > 0 || 'Please type something']" />
                 </div>
                 <div class="right">
-                    <q-input class="mb-10 cy-date" v-model="date" outlined type="date" stack-label label="Date"
+                    <q-input class="mb-10 cy-date" v-model="publishDate" outlined type="date" stack-label label="publishDate"
                     lazy-rules :rules="[val => val && val.length > 0 || 'Please select a date']" />
 
                     <q-input class="mb-10 cy-startTime" v-model="startTime" outlined type="time" stack-label label="Start Time"
@@ -44,7 +44,7 @@ export default {
     setup() {
         const title = ref(null)
         const description = ref(null)
-        const date = ref(null)
+        const publishDate = ref(null)
         const startTime = ref(null)
         const endTime = ref(null)
         const location = ref(null)
@@ -52,7 +52,7 @@ export default {
         return {
             title,
             description,
-            date,
+            publishDate,
             startTime,
             endTime,
             location,
@@ -62,7 +62,7 @@ export default {
                 let event = {};
                 event.title = title.value;
                 event.description = description.value;
-                event.date = date.value;
+                event.publishDate = publishDate.value;
                 event.startTime = startTime.value;
                 event.endTime = endTime.value;
                 event.location = location.value;
