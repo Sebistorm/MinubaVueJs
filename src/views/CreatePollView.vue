@@ -19,6 +19,9 @@
                     <q-select class="mb-10" outlined v-model="type" :options="options" label="Select Type *"
                     lazy-rules :rules="[val => val && val.length > 0|| 'Please select a type']" />
 
+                    <q-input class="mb-10" v-model="publishDate" outlined type="date" stack-label label="Start Date"
+                    lazy-rules :rules="[val => val && val.length > 0 || 'Please select a start date']" />
+
                     <q-input class="mb-10" v-model="dateStart" outlined type="date" stack-label label="Start Date"
                     lazy-rules :rules="[val => val && val.length > 0 || 'Please select a start date']" />
 
@@ -48,6 +51,7 @@ export default {
         const dateStart = ref(null)
         const dateEnd = ref(null)
         const pollAnswers = ref(null)
+        const publishDate = ref(null)
         const type = ref(null);
 
         return {
@@ -56,6 +60,7 @@ export default {
             dateStart,
             dateEnd,
             pollAnswers,
+            publishDate,
             type,
             options: [
                 'Standard Poll', 'CoWorker of the month'
@@ -69,6 +74,7 @@ export default {
                 poll.dateStart = dateStart.value;
                 poll.dateEnd = dateEnd.value;
                 poll.type = type.value;
+                poll.publishDate = publishDate.value;
                 poll.imagePath = "https://blogs.tees.ac.uk/lteonline/files/2018/11/poll.png";
                 if(type.value != 'CoWorker of the month') {
                     let tempAnswersArray = [];
@@ -79,7 +85,7 @@ export default {
                     console.log(tempAnswersArray);
                     poll.pollAnswers = tempAnswersArray;
                 }
-                   
+
                 const fetchOptions = {
                 method: "POST",
                 headers: {

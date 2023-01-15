@@ -1,7 +1,7 @@
 <template>
     <div id="content">
         <div class="formContent">
-            <h1>Create News</h1>
+            <h1>Update News</h1>
             <q-form @submit="onSubmit" class="form">
                 <div class="left">
                     <q-input class="mb-10" outlined v-model="news.title" label="Title"
@@ -10,7 +10,7 @@
                     lazy-rules :rules="[val => val && val.length > 0 || 'Please Type Description']" />
                 </div>
                 <div class="right">
-                    <q-input class="mb-10" outlined v-model="news.publishDate" stack-label type="date" label="Publish Date"
+                    <q-input class="mb-10" outlined v-model="newsDate" stack-label type="date" label="Publish Date"
                     lazy-rules :rules="[val => val && val.length > 0 || 'Please select a date']" />
                     <q-input class="mb-10" outlined v-model="news.imagePath" label="imagePath"
                     lazy-rules :rules="[val => val && val.length > 0 || 'Please Link Image']" />
@@ -31,7 +31,8 @@ export default {
     name: "UpdateNewsView",
     data() {
         return {
-            news: {}
+            news: {},
+            newsDate: Date
         }
     },
     async mounted() {
@@ -39,12 +40,13 @@ export default {
         .then(res => res.json())
         .then(data => {
             this.news = data;
+            console.log(data)
         })
     },
     methods: {
         async onSubmit() {
             console.log("submit!")
-            console.log(this.event);
+            console.log(this.news);
 
             const fetchOptions = {
             method: "PUT",
