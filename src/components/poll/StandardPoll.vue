@@ -11,7 +11,7 @@
                     <q-btn @click="voteNow" class="mb-20" style="background: var(--primary-green); color: var(--primary-white);" label="Vote" />
                     <div class="votesContainer">
                         <h6>Votes</h6>
-                        <h4>25</h4>
+                        <h4>{{totalVotesCount}}</h4>
                     </div>
                     <q-btn @click="confirm = true" class="mt-20" style="background: var(--primary-red); color: var(--primary-white); margin-bottom: 10px;" label="Withdraw Vote" />
                 </div>
@@ -66,7 +66,11 @@ export default {
         return {
             confirm: ref(false),
             icon: ref(false),
-            pollResult: [],
+            pollResult: []
+        }
+    },
+    data() {
+        return {
             totalVotesCount: 0
         }
     },
@@ -75,7 +79,7 @@ export default {
         .then(res => res.json())
         .then(data => {
             this.pollResult = data;
-            console.log(this.pollResult)
+            console.log(data)
             this.pollResult.forEach(element => {
                 this.totalVotesCount = this.totalVotesCount + element[1]
             });
