@@ -36,6 +36,7 @@ export default {
     }
     .card {
         height: 100%;
+        margin-bottom: 2rem;
     }
     .cardHeader {
         max-height: 200px;
