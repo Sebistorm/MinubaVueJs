@@ -19,7 +19,7 @@
                     <q-select class="mb-10" outlined v-model="type" :options="options" label="Select Type *"
                     lazy-rules :rules="[val => val && val.length > 0|| 'Please select a type']" />
 
-                    <q-input class="mb-10" v-model="publishDate" outlined type="date" stack-label label="Start Date"
+                    <q-input class="mb-10" v-model="publishDate" outlined type="date" stack-label label="Publish Date"
                     lazy-rules :rules="[val => val && val.length > 0 || 'Please select a start date']" />
 
                     <q-input class="mb-10" v-model="dateStart" outlined type="date" stack-label label="Start Date"
