@@ -29,7 +29,6 @@ export default {
                     id: Number(this.coWorkerId)
                 }
             };
-            
             const fetchOptions = {
             method: "POST",
             headers: {
@@ -37,11 +36,9 @@ export default {
             },
             body: JSON.stringify(CoworkerOfTheMonth)
             }
-
             const response = await fetch("http://localhost:8080/coworkermonthvote", fetchOptions);
             if (response.ok) {
                 console.log(response.ok);
-                //router.push(`/poll/${data.id}`);
             } 
         }
     }
