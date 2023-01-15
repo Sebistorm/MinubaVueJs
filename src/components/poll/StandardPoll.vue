@@ -96,7 +96,6 @@ export default {
                         id: this.coWorkerId
                     }
                 };
-
                 const fetchOptions = {
                 method: "POST",
                 headers: {
@@ -104,11 +103,9 @@ export default {
                 },
                 body: JSON.stringify(pollVotes)
                 }
-
                 const response = await fetch("http://localhost:8080/pollvote", fetchOptions);
                 if (response.ok) {
                     console.log(response.ok);
-                    //router.push(`/poll/${data.id}`);
                 }
             }   
         },
