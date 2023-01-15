@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import router from '@/router'
+
 
 export default {
     name: "UpdateNewsView",
@@ -58,6 +60,8 @@ export default {
 
             const response = await fetch(`http://localhost:8080/news/${this.$route.params.id}`, fetchOptions);
             if (response.ok) {
+                const data = await response.json();
+                router.push(`/news/${data.id}`);
                 console.log(response.ok);
             }
         }

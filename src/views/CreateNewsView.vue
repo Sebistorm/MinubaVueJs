@@ -28,6 +28,7 @@
 <script>
 //import router from '@/router'
 import { ref } from 'vue'
+import router from '@/router'
 
 export default {
     name: "CreateNewsView",
@@ -67,8 +68,9 @@ export default {
 
                 const response = await fetch("http://localhost:8080/news", fetchOptions);
                 if (response.ok) {
+                    const data = await response.json();
                     console.log(response.ok);
-                    //router.push(`/poll/${data.id}`);
+                    router.push(`/poll/${data.id}`);
                 }
             }
         }
