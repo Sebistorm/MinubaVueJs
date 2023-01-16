@@ -10,9 +10,9 @@
             <img v-if="news.imagePath != 'null'" :src="news.imagePath" :alt="news.title">
             <div class="eventAdminButtons">
                 <routerLink :to="'/updatenews/' + news.id">
-                    <q-btn type="button" style="background: var(--primary-green); color: var(--primary-white);" label="Update Event" />
+                    <q-btn type="button" style="background: var(--primary-green); color: var(--primary-white);" label="Update News" />
                 </routerLink>
-                <q-btn @click="confirm = true" class="cy-btnDelete" type="button" style="background: var(--primary-grey); color: var(--primary-white);" label="Delete Event" />
+                <q-btn @click="confirm = true" class="cy-btnDelete" type="button" style="background: var(--primary-grey); color: var(--primary-white);" label="Delete News" />
             </div>
         </dig>
     </div>
